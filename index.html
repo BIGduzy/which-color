@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Which color am I?</title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    </head>
+    <body bgcolor="#32a">
+        <div class="container">
+            <div class="box">
+                <h1>Which color are you?</h1>
+                <h3>Just enter your first name</h3>
+                <form id="form">
+                    <input name="name" />
+                    <button type="submit" name="submit">Try it!</button>
+                </form>
+            </div>
+        </div>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: center;
+                position: absolute;
+                width: 100%;
+            }
+            .box {
+                align-items: center;
+                background-color: #fff;
+                box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+                display: flex;
+                flex-direction: column;
+                height: 200px;
+                width: 500px;
+            }
+        </style>
+        <script type="text/javascript">
+            const element = document.getElementById("form");
+            if(element.addEventListener) {
+                element.addEventListener("submit", setBackground.bind(this), false); // Modern bowsers
+            } else if(element.attachEvent) {
+                element.attachEvent('onsubmit', setBackground.bind(this)); // Old IE
+            }
+
+            function setBackground(evt) {
+                evt.preventDefault();
+                const value = evt.target['name'].value;
+                console.log(value);
+                document.body.setAttribute('bgcolor', value);
+            }
+        </script>
+    </body>
+</html>
